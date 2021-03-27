@@ -56,6 +56,32 @@ func (ll *LinkedList) PushBack(key string, value int) int {
     return ll.length
 }
 
+// Remove all the instances O(n)
+func (ll *LinkedList) Remove(key string) {
+    if ll.head == nil {
+        return
+    }
+    if ll.head.key == key {
+        ll.head = ll.head.next
+        ll.length -= 1
+    }
+    var prev *Node = nil
+    curr := ll.head
+
+    for curr != nil {
+        if curr.key == key {
+            prev.next = curr.next
+            ll.length -= 1
+        }
+        prev = curr
+        curr = curr.next
+    }
+}
+
+func (ll LinkedList) Length() int {
+    return ll.length
+}
+
 func (ll LinkedList) Head() *Node {
     return ll.head
 }
@@ -99,8 +125,25 @@ func main() {
     visit := ll.Visit()
     fmt.Println(visit)
 
+    ll.Remove("Head2")
+    ll.Remove("Back2")
+    ll.Remove("Head3")
+
+    visit = ll.Visit()
+    fmt.Println(visit)
+
+    ll.Remove("Back3")
+    ll.Remove("Back1")
+    ll.Remove("Head1")
+
+    visit = ll.Visit()
+    fmt.Println(visit)
+
     head := ll.Head()
     tail := ll.Tail()
-    fmt.Println("Head:", strconv.Itoa(head.value))
-    fmt.Println("Tail:", strconv.Itoa(tail.value))
+    if head != nil {
+        fmt.Println("Head:", strconv.Itoa(head.value))
+        fmt.Println("Tail:", strconv.Itoa(tail.value))
+    }
+    fmt.Println("Length:", ll.Length())
 }
