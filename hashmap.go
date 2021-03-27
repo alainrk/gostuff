@@ -1,52 +1,70 @@
 package main
 
-import "fmt"
+import (
+    "fmt"
+    "bytes"
+    "strconv"
+)
 
-type LinkedLister interface {
-    Add()
-    Remove()
-    Length()
-}
+// type LinkedLister interface {
+//     PushHead()
+//     Remove()
+//     Length()
+//     Visit()
+// }
 
-type node struct {
+type Node struct {
     key string
     value int
-    next *node
+    next *Node
 }
 
 type LinkedList struct {
-    head *node
+    head *Node
+    tail *Node
     length int
 }
 
-func newNode(key string, value int) *node {
-    n := node{key: key, value: value}
-    n.next = nil
-    return &n
+// Gonna use pointer receiver here to mutate all the stuff
+func (ll *LinkedList) PushHead(key string, value int) int {
+    n := Node{key, value, ll.head}
+
+    ll.head = &n
+    ll.length += 1
+    fmt.Println(ll.head)
+
+    return ll.length
 }
 
-// func newLinkedList() *LinkedList {
-//     ll := LinkedList{}
-//     return &ll
-// }
+// Gonna use value receiver here because i'm just reading
+func (ll LinkedList) Visit() string {
+    var visit bytes.Buffer
+    visit.WriteString("Visit: [ ")
+    curr := ll.head
+    for curr != nil {
+        visit.WriteString(curr.key)
+        visit.WriteString(": ")
+        visit.WriteString(strconv.Itoa(curr.value))
+        if curr.next != nil {
+            visit.WriteString(",")
+        }
+        visit.WriteString(" ")
+        curr = curr.next
+    }
+    visit.WriteString("]")
+    var res string = visit.String()
+    return res
+}
 
 func main() {
     ll := LinkedList{}
-    n := newNode("bobbolo", 666)
-    ll.head = n
-    fmt.Println(n)
-    fmt.Println(ll)
+    ll.PushHead("Head1", 3)
+    ll.PushHead("Head2", 2)
+    ll.PushHead("Head3", 1)
+    ll.PushBack("Back1", 4)
+    ll.PushBack("Back2", 5)
+    ll.PushBack("Back3", 6)
+
+    visit := ll.Visit()
+    fmt.Printf(visit)
 }
-
-// func main() {
-//     fmt.Println(node{"Bob", 20})
-//     fmt.Println(&node{key: "Ann", value: 40})
-//     n := node{key: "Sean", value: 666}
-//     fmt.Println(n.name)
-
-//     np := &n
-//     fmt.Println(np.age)
-
-//     np.value = 51
-//     fmt.Println(np.value)
-// }
