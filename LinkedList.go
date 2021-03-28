@@ -126,47 +126,5 @@ func (ll LinkedList) Visit() string {
 }
 
 func main() {
-    ll := LinkedList{}
-    ll.PushHead("Head1", 3)
-    ll.PushHead("Head2", 2)
-    ll.PushHead("Head3", 1)
-
-    fmt.Println("Tail:", strconv.Itoa(ll.Tail().value))
-
-    ll.PushBack("Back1", 4)
-    ll.PushBack("Back2", 5)
-    ll.PushBack("Back3", 6)
-
-    visit := ll.Visit()
-    fmt.Println(visit)
-
-    ll.Reverse()
-    visit = ll.Visit()
-    fmt.Println("1° Reverse:", visit)
-
-    ll.Reverse()
-    visit = ll.Visit()
-    fmt.Println("2° Reverse:", visit)
-
-    ll.Remove("Head2")
-    ll.Remove("Back2")
-    ll.Remove("Head3")
-
-    visit = ll.Visit()
-    fmt.Println(visit)
-
-    ll.Remove("Back3")
-    ll.Remove("Back1")
-    ll.Remove("Head1")
-
-    visit = ll.Visit()
-    fmt.Println(visit)
-
-    head := ll.Head()
-    tail := ll.Tail()
-    if head != nil {
-        fmt.Println("Head:", strconv.Itoa(head.value))
-        fmt.Println("Tail:", strconv.Itoa(tail.value))
-    }
-    fmt.Println("Length:", ll.Length())
+    fmt.Println("Launch tests to check correctness.")
 }
