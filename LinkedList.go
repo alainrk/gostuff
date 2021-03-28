@@ -14,6 +14,7 @@ type LinkedLister interface {
     Remove()
     Length()
     Visit()
+    Reverse()
 }
 
 type Node struct {
@@ -56,6 +57,20 @@ func (ll *LinkedList) PushBack(key string, value int) int {
     return ll.length
 }
 
+func (ll *LinkedList) Reverse() {
+    curr := ll.head
+    ll.head, ll.tail = ll.tail, ll.head
+    var prev *Node = nil
+
+    for curr != nil {
+        follower := curr.next
+        curr.next = prev
+        prev = curr
+        curr = follower
+    }
+    ll.head = prev
+}
+
 // Remove all the instances O(n)
 func (ll *LinkedList) Remove(key string) {
     if ll.head == nil {
@@ -93,19 +108,19 @@ func (ll LinkedList) Tail() *Node {
 // Gonna use value receiver here because i'm just reading
 func (ll LinkedList) Visit() string {
     var visit bytes.Buffer
-    visit.WriteString("Visit: [ ")
+    // visit.WriteString("Visit: [ ")
     curr := ll.head
     for curr != nil {
-        visit.WriteString(curr.key)
-        visit.WriteString(": ")
+        // visit.WriteString(curr.key)
+        // visit.WriteString(": ")
         visit.WriteString(strconv.Itoa(curr.value))
         if curr.next != nil {
             visit.WriteString(",")
         }
-        visit.WriteString(" ")
+        // visit.WriteString(" ")
         curr = curr.next
     }
-    visit.WriteString("]")
+    // visit.WriteString("]")
     var res string = visit.String()
     return res
 }
@@ -124,6 +139,14 @@ func main() {
 
     visit := ll.Visit()
     fmt.Println(visit)
+
+    ll.Reverse()
+    visit = ll.Visit()
+    fmt.Println("1° Reverse:", visit)
+
+    ll.Reverse()
+    visit = ll.Visit()
+    fmt.Println("2° Reverse:", visit)
 
     ll.Remove("Head2")
     ll.Remove("Back2")
