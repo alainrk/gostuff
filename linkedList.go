@@ -1,7 +1,6 @@
 package main
 
 import (
-    "fmt"
     "bytes"
     "strconv"
 )
@@ -123,8 +122,4 @@ func (ll LinkedList) Visit() string {
     // visit.WriteString("]")
     var res string = visit.String()
     return res
-}
-
-func main() {
-    fmt.Println("Launch tests to check correctness.")
 }
