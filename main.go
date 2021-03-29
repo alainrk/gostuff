@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
-	"github.com/alainrk/gostuff/datastruct"
+	// "fmt"
+	// "github.com/alainrk/gostuff/datastruct"
 )
 
 func main() {

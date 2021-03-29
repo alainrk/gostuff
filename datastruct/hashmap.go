@@ -1,8 +1,10 @@
 package datastruct
 
-// import (
-//     "fmt"
-// )
+import (
+	// "fmt"
+	"bytes"
+	"strconv"
+)
 
 // See: http://www.cse.yorku.ca/~oz/hash.html
 func sdbmHash(text string) uint64 {
@@ -14,15 +16,43 @@ func sdbmHash(text string) uint64 {
 	return hash
 }
 
+func (hm *HashMap) calcIndex (key string) uint64 {
+	return sdbmHash(key) % hm.Len()
+}
 
+
+func (hm HashMap) Len() uint64 {
+	return 1024
+}
 type HashMap struct {
-	items [1024]*LinkedList
+	items [1024] *LinkedList
+}
+
+func (hm HashMap) Print() string {
+	var visit bytes.Buffer
+	for i, item := range hm.items {
+		if item != nil {
+			visit.WriteString(strconv.Itoa(i))
+			visit.WriteString(": ")
+			visit.WriteString(item.Visit())
+			visit.WriteString("\n")
+			} else {
+				visit.WriteString(strconv.Itoa(i))
+				visit.WriteString(": [EMPTY]")
+		}
+	}
+	return visit.String()
 }
 
 func (hm *HashMap) Add(key string, value int) {
-	return
+	index := hm.calcIndex(key)
+	if hm.items[index] == nil {
+		hm.items[index] = &LinkedList{}
+	}
+	hm.items[index].PushBack(key, value)
 }
 
 func (hm *HashMap) Get(key string) int {
-	return 3
+	index := hm.calcIndex(key)
+	return hm.items[index].Head().value
 }
