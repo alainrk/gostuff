@@ -29,6 +29,12 @@ func TestHashMap(t *testing.T) {
         t.Errorf("Explicit key update. Wrong value [key1] = %d; want %d", given, expected)
     }
 
-    fmt.Println(hm.Print())
+    given = hm.Get("476")
+    expected = 476
+    if given != expected {
+        t.Errorf("Explicit key update. Wrong value [key1] = %d; want %d", given, expected)
+    }
+
+    // fmt.Println(hm.Print())
 }
 

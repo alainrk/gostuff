@@ -54,5 +54,5 @@ func (hm *HashMap) Add(key string, value int) {
 
 func (hm *HashMap) Get(key string) int {
 	index := hm.calcIndex(key)
-	return hm.items[index].Head().value
+	return hm.items[index].Get(key)
 }

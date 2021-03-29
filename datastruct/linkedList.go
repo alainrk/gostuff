@@ -123,3 +123,14 @@ func (ll LinkedList) Visit() string {
     var res string = visit.String()
     return res
 }
+
+func (ll LinkedList) Get (key string) int {
+    curr := ll.head
+    for curr != nil {
+        if curr.key == key {
+            return curr.value
+        }
+        curr = curr.next
+    }
+    return -1
+}
