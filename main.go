@@ -6,6 +6,7 @@ import (
 )
 
 func main() {
-	hm := datastruct.HashMap{}
-	fmt.Println(hm.Get("xxx"))
+	// hm := datastruct.HashMap{}
+	// fmt.Println(hm.Get("xxx"))
+	fmt.Println(datastruct.SdbmHash("ciao") % 1024)
 }
