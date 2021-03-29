@@ -1,11 +1,11 @@
-package main
+package datastruct
 
 // import (
 //     "fmt"
 // )
 
 type HashMap struct {
-	fake int
+	items [1024]*LinkedList
 }
 
 func (hm *HashMap) Add(key string, value int) {

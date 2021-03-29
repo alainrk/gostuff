@@ -19,11 +19,7 @@ jobs:
         go-version: 1.15
 
     - name: Build
-      # env:
-      #   GOPROXY: "https://proxy.golang.org"
-      run: go build .
+      run: go build -v ./...
 
     - name: Test
-      # env:
-      #   GOPROXY: "https://proxy.golang.org"
-      run: go test -v .
+      run: go test -v ./...
