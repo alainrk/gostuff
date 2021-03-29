@@ -1,7 +1,7 @@
 package datastruct
 
 import (
-	// "fmt"
+	"fmt"
     "testing"
     "strconv"
 )
@@ -29,6 +29,6 @@ func TestHashMap(t *testing.T) {
         t.Errorf("Explicit key update. Wrong value [key1] = %d; want %d", given, expected)
     }
 
-    // fmt.Println(hm.Print())
+    fmt.Println(hm.Print())
 }
 
