@@ -38,7 +38,7 @@ func (hm HashMap) Print() string {
 			visit.WriteString("\n")
 			} else {
 				visit.WriteString(strconv.Itoa(i))
-				visit.WriteString(": [EMPTY]")
+				visit.WriteString(": [EMPTY]\n")
 		}
 	}
 	return visit.String()
