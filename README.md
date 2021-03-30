@@ -1,5 +1,8 @@
 # Playing around with go
-[![YourActionName Actions Status](https://github.com/{userName}/{repoName}/workflows/{workflowName}/badge.svg)](https://github.com/{userName}/{repoName}/actions)
+![example workflow](https://github.com/alainrk/gostuff/workflows/Go/badge.svg)
+![example branch parameter](https://github.com/alainrk/gostuff/workflows/Go/badge.svg?branch=master)
+![example event parameter](https://github.com/alainrk/gostuff/workflows/Go/badge.svg?event=pull_request)
+
 [![YourActionName Actions Status](https://github.com/alainrk/gostuff/workflows/Go/badge.svg)](https://github.com/alainrk/gostuff/actions)
 
 ## Mod init
