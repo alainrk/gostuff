@@ -1,6 +1,7 @@
 # Playing around with go
-![example workflow](https://github.com/alainrk/gostuff/.github/workflows/go.yml/badge.svg)
-
+![example workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
+![example branch parameter](https://github.com/github/docs/actions/workflows/main.yml/badge.svg?branch=feature-1)
+![example event parameter](https://github.com/github/docs/actions/workflows/main.yml/badge.svg?event=pull_request)
 
 ## Mod init
 ```
