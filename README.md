@@ -1,4 +1,6 @@
 # Playing around with go
+![example workflow](https://github.com/alainrk/gostuff/.github/workflows/go.yml/badge.svg)
+
 
 ## Mod init
 ```
