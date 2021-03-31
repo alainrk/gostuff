@@ -3,10 +3,9 @@ package main
 import (
 	// "fmt"
 	// "github.com/alainrk/gostuff/datastruct"
+	"github.com/alainrk/gostuff/golangz"
 )
 
 func main() {
-	// hm := datastruct.HashMap{}
-	// fmt.Println(hm.Get("xxx"))
-	// fmt.Println(datastruct.SdbmHash("ciao") % 1024)
+	golangz.Test()
 }
