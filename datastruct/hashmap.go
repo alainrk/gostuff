@@ -17,7 +17,8 @@ func sdbmHash(text string) uint64 {
 }
 
 func (hm *HashMap) calcIndex (key string) uint64 {
-	return sdbmHash(key) % hm.Len()
+	// return sdbmHash(key) % hm.Len()
+	return sdbmHash(key) & (hm.Len() - 1)
 }
 
 
