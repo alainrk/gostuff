@@ -11,6 +11,6 @@ func TestSha(str string) {
 	fmt.Printf("%x", sum)
 }
 
-func Test() {
-	TestSha("diocan")
-}
+// func Test() {
+// 	TestSha("diocan")
+// }
