@@ -56,6 +56,6 @@ func TestJson() {
 	fmt.Println(time.Time(data["created_at"]))
 }
 
-func Test() {
-	TestJson()
-}
+// func Test() {
+// 	TestJson()
+// }
