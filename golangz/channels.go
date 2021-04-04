@@ -29,6 +29,6 @@ func TestChannels() {
 	fmt.Println(<-messages)
 }
 
-func Test() {
-	TestChannels()
-}
+// func Test() {
+// 	TestChannels()
+// }
