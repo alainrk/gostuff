@@ -13,11 +13,24 @@ func testEmptyInterface(val interface{}) int {
 	return assertedTypeVal + 2
 }
 
+func printAll(vals []interface{}) {
+	for _, val := range vals {
+			fmt.Println(val)
+	}
+}
+
 func TestInterfaces () {
 	res := testEmptyInterface(5)
 	fmt.Println(res)
+
+	names := []string{"this", "is", "as", "ugly", "as", "duck"}
+	vals := make([]interface{}, len(names))
+	for i, v := range names {
+			vals[i] = v
+	}
+	printAll(vals)
 }
 
-func Test () {
-	TestInterfaces()
-}
+// func Test () {
+// 	TestInterfaces()
+// }
