@@ -25,6 +25,6 @@ func TestClosures() {
 	fmt.Println(tripler())
 }
 
-func Test() {
-	TestClosures()
-}
+// func Test() {
+// 	TestClosures()
+// }
