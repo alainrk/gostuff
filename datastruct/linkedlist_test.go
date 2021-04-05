@@ -25,8 +25,6 @@ func TestLinkedList(t *testing.T) {
         t.Errorf("Wrong visit = %s; want %s", visit, correct)
     }
 
-    return
-
     ll.Reverse()
     visit = ll.Visit()
     correct = "6,5,4,3,2,1"
