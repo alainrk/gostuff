@@ -12,5 +12,5 @@ func TestSha(str string) {
 }
 
 // func Test() {
-// 	TestSha("diocan")
+// 	TestSha("codroip")
 // }

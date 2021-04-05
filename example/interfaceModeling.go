@@ -37,6 +37,6 @@ func TestModels() {
 	fmt.Println(b, c)
 }
 
-func Test() {
-	TestModels()
-}
+// func Test() {
+// 	TestModels()
+// }
