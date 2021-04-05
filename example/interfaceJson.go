@@ -1,4 +1,4 @@
-package golangz
+package example
 
 import (
 	"encoding/json"

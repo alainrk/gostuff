@@ -1,6 +1,6 @@
 // Thanks to https://jordanorelli.com/post/32665860244/how-to-use-interfaces-in-go
 
-package golangz
+package example
 
 import (
 	"fmt"
