@@ -3,9 +3,9 @@ package main
 import (
 	// "fmt"
 	// "github.com/alainrk/gostuff/datastruct"
-	"github.com/alainrk/gostuff/golangz"
+	"github.com/alainrk/gostuff/example"
 )
 
 func main() {
-	golangz.Test()
+	example.Test()
 }

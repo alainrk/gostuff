@@ -1,4 +1,4 @@
-package golangz
+package example
 
 import (
 	"crypto/sha256"
@@ -10,3 +10,7 @@ func TestSha(str string) {
 	sum := sha256.Sum256([]byte(str))
 	fmt.Printf("%x", sum)
 }
+
+// func Test() {
+// 	TestSha("codroip")
+// }
