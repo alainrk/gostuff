@@ -1,11 +1,7 @@
 package main
 
-import (
-	// "fmt"
-	// "github.com/alainrk/gostuff/datastruct"
-	"github.com/alainrk/gostuff/example"
-)
+// "fmt"
+// "github.com/alainrk/gostuff/datastruct"
 
 func main() {
-	example.Test()
 }

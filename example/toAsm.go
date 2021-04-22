@@ -1,6 +1,6 @@
-package golangz
+package example
 
-func Test() int {
+func TestAsm() int {
 	x := 1
 	y := 2
 	return (x + y)

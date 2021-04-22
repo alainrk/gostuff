@@ -6,7 +6,7 @@ import (
 )
 
 // $> go build . && ./gostuff -n 43 --flagname=100 --par xxxx
-func TestFlags () {
+func TestFlags() {
 	var nFlag = flag.Int("n", -1, "help message for flag n")
 
 	var flagvar int
@@ -22,6 +22,6 @@ func TestFlags () {
 	fmt.Println(strpar)
 }
 
-func Test() {
-	TestFlags()
-}
+// func Test() {
+// 	TestFlags()
+// }
