@@ -1,7 +1,7 @@
 package main
 
-// "fmt"
-// "github.com/alainrk/gostuff/datastruct"
+import "github.com/alainrk/gostuff/web"
 
 func main() {
+	web.TestWeb()
 }

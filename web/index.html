@@ -1,0 +1,40 @@
+<html>
+
+<head>
+  <!-- <title>{{.Title}}</title> -->
+</head>
+
+<body>
+  <!-- <h1>{{.Title}}</h1> -->
+  <form method="POST" action="/">
+    <select name="userask">
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+      <option value="4">Option 4</option>
+      <option value="5">Option 5</option>
+      <option value="6">Option 6</option>
+      <option value="7">Option 7</option>
+    </select>
+    <br/><br/>
+    <label for="fname">FName:</label>
+    <input type="text" id="fname" name="fname" value="pino">
+    <br><br>
+    <label for="lname">LName:</label>
+    <input type="text" id="lname" name="lname" value="duccio">
+    <br><br>
+    <button type="submit">Ask</button>
+  </form>
+
+  <div>name {{.Userask}}</div>
+  <div>userask {{.Fname}}</div>
+  <div>lname {{.Lname}}</div>
+
+  <!-- <ul>
+    {{ range $key, $value := . }}
+    <li>{{ $value }}</li>
+    {{ end }}
+  </ul> -->
+</body>
+
+</html>
