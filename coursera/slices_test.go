@@ -11,7 +11,7 @@ func TestSlices1(t *testing.T) {
 	s2 := arr[3:5]
 
 	s1[1] = "x"
-	if s2[0] != "x" {
+	if s2[0] != "x" && arr[3] != "x" {
 		t.Error("should be 'x'")
 	}
 }
