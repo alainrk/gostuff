@@ -24,4 +24,16 @@ func TestMaps1(t *testing.T) {
 	if len(users) != 3 {
 		t.Error("Expected 3, got ", len(users))
 	}
+
+	// Two value assigment
+	v, exists := users["12345678901"]
+	if !exists || v.name != "John" {
+		t.Error("Expected John, got ", v.name)
+	}
+
+	v, exists = users["_________"]
+	if exists {
+		t.Error("Expected void")
+	}
+
 }
