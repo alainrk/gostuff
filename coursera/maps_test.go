@@ -36,4 +36,13 @@ func TestMaps1(t *testing.T) {
 		t.Error("Expected void")
 	}
 
+	// Ranging
+	ages := uint8(0)
+	for _, user := range users {
+		ages += user.age
+	}
+	if ages != 90 {
+		t.Error("Expected 90, got ", ages)
+	}
+
 }
