@@ -29,7 +29,7 @@ func newName(fname string, lname string) name {
 	return n
 }
 
-func main() {
+func read() {
 	var path string
 	fmt.Print("Insert file path: ")
 	fmt.Scanf("%s", &path)
