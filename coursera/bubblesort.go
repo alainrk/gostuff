@@ -89,7 +89,7 @@ func getSliceFromUser(maxn uint8) []int {
 	return l
 }
 
-func main() {
+func bubble() {
 	l := getSliceFromUser(10)
 	BubbleSort(l)
 	printResult(l)
