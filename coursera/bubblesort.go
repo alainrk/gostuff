@@ -40,12 +40,32 @@ func printResult(l []int) {
 	fmt.Println()
 }
 
+func getCleanSliceNumStringsFromString(s string) []string {
+	l := strings.TrimSuffix(s, "\n")
+	l = strings.Trim(l, " ")
+	var slice []string
+	for _, v := range strings.Split(l, " ") {
+		if v != "" {
+			slice = append(slice, v)
+		}
+	}
+	return slice
+}
+
 func getSliceFromUser(maxn uint8) []int {
 	in := bufio.NewReader(os.Stdin)
 
-	fmt.Print("Enter numbers (up to 10): ")
-	numStr, _ := in.ReadString('\n')
-	numSliceStr := strings.Split(strings.TrimSuffix(numStr, "\n"), " ")
+	var numSliceStr []string
+	for {
+		fmt.Print("Enter numbers divided by one space (up to 10 numbers): ")
+		numStr, _ := in.ReadString('\n')
+		numSliceStr = getCleanSliceNumStringsFromString(numStr)
+		if len(numSliceStr) > int(maxn) {
+			fmt.Println("Too many numbers.")
+			continue
+		}
+		break
+	}
 
 	if len(numSliceStr) < int(maxn) {
 		maxn = uint8(len(numSliceStr))
