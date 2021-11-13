@@ -18,7 +18,7 @@ func GenDisplaceFn(a, v0, s0 float64) func(float64) float64 {
 	}
 }
 
-func main() {
+func dispacement() {
 	a := promptForFloat("Enter the value of a: ")
 	v0 := promptForFloat("Enter the value of v0: ")
 	s0 := promptForFloat("Enter the value of s0: ")
