@@ -7,30 +7,30 @@ import (
 	"strings"
 )
 
-type Animal struct {
+type TAnimal struct {
 	food  string
 	move  string
 	sound string
 }
 
-func (a Animal) Eat() {
+func (a TAnimal) Eat() {
 	fmt.Println(a.food)
 }
 
-func (a Animal) Move() {
+func (a TAnimal) Move() {
 	fmt.Println(a.move)
 }
 
-func (a Animal) Speak() {
+func (a TAnimal) Speak() {
 	fmt.Println(a.sound)
 }
 
-func main() {
-	cow := Animal{"grass", "walk", "moo"}
-	bird := Animal{"worms", "fly", "peep"}
-	snake := Animal{"mice", "slither", "hsss"}
+func animals() {
+	cow := TAnimal{"grass", "walk", "moo"}
+	bird := TAnimal{"worms", "fly", "peep"}
+	snake := TAnimal{"mice", "slither", "hsss"}
 
-	animalsMap := map[string]Animal{
+	animalsMap := map[string]TAnimal{
 		"cow":   cow,
 		"bird":  bird,
 		"snake": snake,

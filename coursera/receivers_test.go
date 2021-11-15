@@ -5,22 +5,22 @@ import (
 	"testing"
 )
 
-type Dog struct {
+type Cat struct {
 	Name string
 	Age  int
 }
 
-func (d Dog) Speak() string {
+func (d Cat) Speak() string {
 	return "Woof " + d.Name + "!"
 }
 
-func (d *Dog) GetOlder() {
+func (d *Cat) GetOlder() {
 	fmt.Printf("From age %d ", d.Age)
 	d.Age++
 }
 
 func TestReceivers1(t *testing.T) {
-	d := Dog{Name: "Fido", Age: 3}
+	d := Cat{Name: "Fido", Age: 3}
 	spoken := d.Speak()
 	if spoken != "Woof Fido!" {
 		t.Error("Expected 'Woof Fido!' but got ", spoken)
