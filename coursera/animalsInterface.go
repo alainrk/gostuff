@@ -73,7 +73,7 @@ func NewSnake(name string) *Snake {
 	return &Snake{name, "mice", "slither", "hsss"}
 }
 
-func main() {
+func animalsInterface() {
 	animals := make(map[string]Animal)
 	var chunks []string
 	in := bufio.NewReader(os.Stdin)
