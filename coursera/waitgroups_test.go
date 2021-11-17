@@ -10,9 +10,9 @@ var routinesAmount, decr int = 10, 10
 
 func rout(wg *sync.WaitGroup, whoami int, decr *int) {
 	wg.Add(1)
+	defer wg.Done()
 	fmt.Println("GoR - ", whoami)
 	*decr--
-	wg.Done()
 }
 
 func TestWaitGroup(t *testing.T) {
