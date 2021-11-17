@@ -21,7 +21,7 @@ func TestWaitGroup(t *testing.T) {
 	for i := 0; i < routinesAmount; i++ {
 		go rout(&wg, i, &decr)
 	}
-	wg.Wait()
+	// wg.Wait()
 	if decr != 0 {
 		t.Error("Expected 0, got ", decr)
 	}
