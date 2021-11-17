@@ -19,7 +19,7 @@ func mul(result *int, x int) {
 // being the sum and multiplication not commutative on each other, and
 // being the order of the operations not deterministic itself.
 
-func main() {
+func racecond() {
 	res := 1
 	for i := 1; i < 10; i++ {
 		go mul(&res, i)
