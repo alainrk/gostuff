@@ -6,22 +6,32 @@ import (
 	"testing"
 )
 
-var routinesAmount, decr int = 10, 10
+var routinesAmount int = 10
 
-func rout(wg *sync.WaitGroup, whoami int, decr *int) {
+var (
+	mu   sync.Mutex
+	decr int = routinesAmount
+)
+
+func rout(wg *sync.WaitGroup, whoami int) {
 	wg.Add(1)
 	defer wg.Done()
-	fmt.Println("GoR - ", whoami)
-	*decr--
+
+	mu.Lock()
+	decr--
+	fmt.Printf("GoR [%d], decr = %d\n", whoami, decr)
+	mu.Unlock()
 }
 
 func TestWaitGroup(t *testing.T) {
-	// func main() {
 	var wg sync.WaitGroup
+
 	for i := 0; i < routinesAmount; i++ {
-		go rout(&wg, i, &decr)
+		go rout(&wg, i)
 	}
+
 	wg.Wait()
+
 	if decr != 0 {
 		t.Error("Expected 0, got ", decr)
 	}
