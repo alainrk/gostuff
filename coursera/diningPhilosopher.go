@@ -51,7 +51,7 @@ func host(philosophers []*Philosopher) {
 			dining++
 			var id int
 			id, requests = requests[0], requests[1:]
-			philosophers[id].eat()
+			philosophers[id].getPermission <- true
 		}
 	}
 }
