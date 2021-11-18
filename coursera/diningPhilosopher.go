@@ -59,20 +59,23 @@ func host(wg *sync.WaitGroup, philosophers []*Philosopher) {
 }
 
 func (p *Philosopher) run(wg *sync.WaitGroup) {
-	fmt.Println("Running philo: ", p.id)
+	fmt.Println("running philo:", p.id)
 	for i := 0; i < int(maxDining); i++ {
 		askPermission <- p.id
+		fmt.Println("waiting for permission:", p.id)
 		<-p.getPermission
-		fmt.Println("starting to eat: ", p.id)
+		fmt.Println("starting to eat:", p.id)
 		p.chopLeft.mu.Lock()
 		p.chopRight.mu.Lock()
+		fmt.Println("both chopstic locked:", p.id)
 		p.dinners++
 		if p.dinners == maxDining {
 			done <- p.id
 		}
 		p.chopLeft.mu.Unlock()
 		p.chopRight.mu.Unlock()
-		fmt.Println("finishing to eat: ", p.id)
+		fmt.Println("finishing to eat:", p.id)
+		fmt.Println(p.id, "ate", p.dinners, "times")
 	}
 	wg.Done()
 }
@@ -84,6 +87,8 @@ func main() {
 
 	for i := 0; i < amount; i++ {
 		chopsticks[i] = &Chopstick{i, sync.Mutex{}}
+	}
+	for i := 0; i < amount; i++ {
 		philosophers[i] = &Philosopher{i, 0, chopsticks[i], chopsticks[(i+1)%amount], make(chan bool)}
 	}
 
