@@ -7,7 +7,6 @@ import (
 )
 
 func prod(wg *sync.WaitGroup, whoami int, s []int, c chan<- int) {
-	wg.Add(1)
 	defer wg.Done()
 
 	res := 1
@@ -23,6 +22,7 @@ func TestChannels1(t *testing.T) {
 
 	var wg sync.WaitGroup
 	for i := 0; i < 3; i++ {
+		wg.Add(1)
 		go prod(&wg, i, []int{1, 2, 3}, c)
 	}
 
