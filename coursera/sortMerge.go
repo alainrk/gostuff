@@ -67,7 +67,7 @@ func merge(chunks [][]int) []int {
 	return sorted
 }
 
-func main() {
+func sortMerge() {
 	l := promptList()
 	chunkSize := len(l) / threadsNum
 
