@@ -9,7 +9,7 @@ const amount int = 5
 
 var (
 	dining    int = 0
-	maxDining int = 2
+	maxDining int = 3
 )
 
 var (
@@ -60,7 +60,7 @@ func host(wg *sync.WaitGroup, philosophers []*Philosopher) {
 
 func (p *Philosopher) run(wg *sync.WaitGroup) {
 	// fmt.Println("running philo:", p.id)
-	for i := 0; i < int(maxDining); i++ {
+	for i := 0; i < maxDining; i++ {
 		askPermission <- p.id
 		// fmt.Println("waiting for permission:", p.id)
 		<-p.getPermission
