@@ -14,7 +14,6 @@ var (
 )
 
 func rout(wg *sync.WaitGroup, whoami int) {
-	wg.Add(1)
 	defer wg.Done()
 
 	mu.Lock()
@@ -27,6 +26,7 @@ func TestWaitGroup(t *testing.T) {
 	var wg sync.WaitGroup
 
 	for i := 0; i < routinesAmount; i++ {
+		wg.Add(1)
 		go rout(&wg, i)
 	}
 
