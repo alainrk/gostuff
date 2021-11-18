@@ -14,6 +14,7 @@ var (
 
 var (
 	askPermission = make(chan int)
+	release       = make(chan int)
 	done          = make(chan int)
 )
 
@@ -33,7 +34,6 @@ type Philosopher struct {
 func host(wg *sync.WaitGroup, philosophers []*Philosopher) {
 	defer wg.Done()
 
-	release := make(chan bool)
 	requests := []int{}
 	stuffed := 0
 
@@ -59,23 +59,25 @@ func host(wg *sync.WaitGroup, philosophers []*Philosopher) {
 }
 
 func (p *Philosopher) run(wg *sync.WaitGroup) {
-	fmt.Println("running philo:", p.id)
+	// fmt.Println("running philo:", p.id)
 	for i := 0; i < int(maxDining); i++ {
 		askPermission <- p.id
-		fmt.Println("waiting for permission:", p.id)
+		// fmt.Println("waiting for permission:", p.id)
 		<-p.getPermission
-		fmt.Println("starting to eat:", p.id)
+		// fmt.Println("permission gained:", p.id)
 		p.chopLeft.mu.Lock()
 		p.chopRight.mu.Lock()
-		fmt.Println("both chopstic locked:", p.id)
+		// fmt.Println("both chopstic locked:", p.id)
+		fmt.Println("starting to eat:", p.id)
 		p.dinners++
+		fmt.Println("finishing to eat:", p.id)
+		p.chopLeft.mu.Unlock()
+		p.chopRight.mu.Unlock()
+		release <- p.id
 		if p.dinners == maxDining {
 			done <- p.id
 		}
-		p.chopLeft.mu.Unlock()
-		p.chopRight.mu.Unlock()
-		fmt.Println("finishing to eat:", p.id)
-		fmt.Println(p.id, "ate", p.dinners, "times")
+		// fmt.Println(p.id, "ate", p.dinners, "times")
 	}
 	wg.Done()
 }
