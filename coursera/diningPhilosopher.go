@@ -58,7 +58,7 @@ func host(wg *sync.WaitGroup, philosophers []*Philosopher) {
 	}
 }
 
-func (p *Philosopher) run() {
+func (p *Philosopher) run(wg *sync.WaitGroup) {
 	fmt.Println("Running philo: ", p.id)
 	for i := 0; i < int(maxDining); i++ {
 		askPermission <- p.id
@@ -74,6 +74,7 @@ func (p *Philosopher) run() {
 		p.chopRight.mu.Unlock()
 		fmt.Println("finishing to eat: ", p.id)
 	}
+	wg.Done()
 }
 
 func main() {
@@ -90,7 +91,8 @@ func main() {
 	go host(&wg, philosophers)
 
 	for _, p := range philosophers {
-		go p.run()
+		wg.Add(1)
+		go p.run(&wg)
 	}
 
 	wg.Wait()
