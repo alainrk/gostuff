@@ -30,7 +30,9 @@ type Philosopher struct {
 	getPermission chan bool
 }
 
-func host(philosophers []*Philosopher) {
+func host(wg *sync.WaitGroup, philosophers []*Philosopher) {
+	defer wg.Done()
+
 	release := make(chan bool)
 	requests := []int{}
 	stuffed := 0
@@ -56,7 +58,8 @@ func host(philosophers []*Philosopher) {
 	}
 }
 
-func (p *Philosopher) eat() {
+func (p *Philosopher) run() {
+	fmt.Println("Running philo: ", p.id)
 	for i := 0; i < int(maxDining); i++ {
 		askPermission <- p.id
 		<-p.getPermission
@@ -74,6 +77,7 @@ func (p *Philosopher) eat() {
 }
 
 func main() {
+	var wg sync.WaitGroup
 	chopsticks := make([]*Chopstick, amount)
 	philosophers := make([]*Philosopher, amount)
 
@@ -82,9 +86,12 @@ func main() {
 		philosophers[i] = &Philosopher{i, 0, chopsticks[i], chopsticks[(i+1)%amount], make(chan bool)}
 	}
 
-	go host(philosophers)
+	wg.Add(1)
+	go host(&wg, philosophers)
 
 	for _, p := range philosophers {
-		go p.eat()
+		go p.run()
 	}
+
+	wg.Wait()
 }
