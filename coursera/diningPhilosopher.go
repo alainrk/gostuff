@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"sync"
+	"time"
 )
 
 const amount int = 5
@@ -69,6 +70,7 @@ func (p *Philosopher) run(wg *sync.WaitGroup) {
 		p.chopRight.mu.Lock()
 		// fmt.Println("both chopstic locked:", p.id)
 		fmt.Println("starting to eat:", p.id)
+		time.Sleep(100 * time.Millisecond)
 		p.dinners++
 		fmt.Println("finishing to eat:", p.id)
 		p.chopLeft.mu.Unlock()
